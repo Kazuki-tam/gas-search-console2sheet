@@ -1,3 +1,7 @@
+import { getUrlInspection } from "./search-console/getUrlInspection";
+import { getSitemapUrls } from "./sitemap/getSitemapUrls";
+import { writeUrlsToSheet } from "./sheets/writeUrlsToSheet";
+
 /**
  * main function
  */
@@ -6,7 +10,11 @@ declare const global: {
 };
 
 function main() {
-  console.log("Main function!!");
+  // getUrlInspection("https://yones-kitchen.vercel.app/post-102");
+  const urlList = getSitemapUrls(
+    "https://yones-kitchen.vercel.app/sitemap-0.xml"
+  );
+  writeUrlsToSheet(urlList);
 }
 
 global.main = main;
