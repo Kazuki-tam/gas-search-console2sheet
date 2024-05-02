@@ -1,6 +1,7 @@
-import { getUrlInspection } from "./search-console/getUrlInspection";
 import { getSitemapUrls } from "./sitemap/getSitemapUrls";
 import { writeUrlsToSheet } from "./sheets/writeUrlsToSheet";
+import { writeIndexStatus } from "./sheets/writeIndexStatus";
+import { getPropertiesService } from "./utils/getPropertiesService";
 
 /**
  * main function
@@ -10,11 +11,14 @@ declare const global: {
 };
 
 function main() {
-  // getUrlInspection("https://yones-kitchen.vercel.app/post-102");
-  const urlList = getSitemapUrls(
-    "https://yones-kitchen.vercel.app/sitemap-0.xml"
-  );
+  // サイトマップのURLを取得
+  const siteMapUrl = getPropertiesService("SITEMAP_URL");
+  // サイトマップのURLからURLリストを取得
+  const urlList = getSitemapUrls(siteMapUrl);
+  // URLリストをシートに書き込む
   writeUrlsToSheet(urlList);
+  // インデックスステータスをシートに書き込む
+  writeIndexStatus();
 }
 
 global.main = main;
