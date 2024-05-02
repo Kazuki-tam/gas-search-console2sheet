@@ -1,5 +1,5 @@
 import { getSitemapUrls } from "./sitemap/getSitemapUrls";
-import { writeUrlsToSheet } from "./sheets/writeUrlsToSheet";
+import { writeUrlsToSheet } from "./sheets/write-sitemap/";
 import { writeIndexStatus } from "./sheets/write-index-status";
 import { getPropertiesService } from "./utils/getPropertiesService";
 

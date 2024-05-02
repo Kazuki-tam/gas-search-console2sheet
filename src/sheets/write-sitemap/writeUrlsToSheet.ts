@@ -1,5 +1,7 @@
-import { formatDate } from "../utils/formatDate";
-import { createSheet } from "./createSheet";
+import { formatDate } from "../../utils/formatDate";
+import { createSheet } from "../createSheet";
+import { writeDataToSheet } from "./writeDataToSheet";
+import { setColumnWidths } from "./setColumnWidths";
 
 /**
  * URLと関連情報をシートに書き込む
@@ -39,38 +41,6 @@ function writeUrlsToSheet(urls: string[]): void {
   sheet
     .getRange(1, 1, dataToWrite.length, dataToWrite[0].length)
     .setWrapStrategy(SpreadsheetApp.WrapStrategy.CLIP);
-}
-
-/**
- * シートにデータを書き込む
- * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - シート
- * @param {string[][]} data - 書き込むデータ
- */
-function writeDataToSheet(
-  sheet: GoogleAppsScript.Spreadsheet.Sheet,
-  data: string[][]
-): void {
-  sheet.getRange(1, 1, data.length, data[0].length).setValues(data);
-
-  // 1行目の背景色をブルー系に設定
-  sheet
-    .getRange(1, 1, 1, data[0].length)
-    .setBackground("#191970")
-    .setFontColor("#FFFFFF");
-}
-
-/**
- * シートの列幅を設定する
- * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - シート
- * @param {number[]} widths - 列幅のリスト
- */
-function setColumnWidths(
-  sheet: GoogleAppsScript.Spreadsheet.Sheet,
-  widths: number[]
-): void {
-  widths.forEach((width, index) => {
-    sheet.setColumnWidth(index + 1, width);
-  });
 }
 
 export { writeUrlsToSheet };
