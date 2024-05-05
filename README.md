@@ -1,45 +1,38 @@
-# gas-bun-starter
+# Search Console検査自動化（β）
 
-gas-bun-starter is a starter kit that uses Bun for Google Apps Script.
+Google Search Consoleの情報をスプレッドシートに出力するGoogle Apps Scriptプロジェクトです。
 
-## Status
+## 主な機能
+- URLのインデックス状況を取得
+- インデックス状況の推移を整理
 
-[![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-bun-starter)](https://github.com/Kazuki-tam/gas-bun-starter/releases/tag/v0.0.1)
-[![Issues](https://img.shields.io/github/issues/Kazuki-tam/gas-bun-starter)](https://github.com/Kazuki-tam/gas-bun-starter/issues)
-![Maintenance](https://img.shields.io/maintenance/yes/2024)
-![Release date](https://img.shields.io/github/release-date/Kazuki-tam/gas-bun-starter)
-
-## Features
-- Just deploy this project code without development
-- Develop, test, run, and bundle JavaScript & TypeScript with Bun
-
-## Main dependencies
+## 主な依存関係
 
 - [Google Apps Script](https://workspace.google.co.jp/intl/ja/products/apps-script/)
 - [Clasp](https://github.com/google/clasp)
 
-## Prerequisites
+## 必要な環境
 
 - [Bun](https://bun.sh/)
 
-## How to use
+## 利用方法
 
-Clone this repository and install dependencies.
+このリポジトリをクローンし、依存関係をインストールします。
 
 ```bash
 bun install
 ```
 
-### Login google account
+### Googleアカウントにログイン
 
 ```shell
 bun clasp:login
 ```
 
-### Connect to your exiting project
+### Google Apps Scriptプロジェクトを作成
 
-Create a `.clasp.json` at the root, and then Add these settings.
-Open App script from your spreadsheet and check out a script Id at the setting page.
+`.clasp.json`を作成し、以下の設定を追加します。
+スクリプトIDを取得し、`<SCRIPT_ID>`に置き換えます。
 
 ```json
 {
@@ -48,27 +41,27 @@ Open App script from your spreadsheet and check out a script Id at the setting p
 }
 ```
 
-Deploy your code to the existing project.
+コードをスクリプトにデプロイします。
 
 ```shell
 bun release
 ```
 
-## Available Commands
+## 利用可能なコマンド
 
-Build your project.
+プロジェクトのビルドを行います。
 
 ```shell
 bun postBuild
 ```
 
-Build your project files and force writes all local files to script.google.com.
+プロジェクトコードをビルドし、スクリプトをデプロイします。
 
 ```shell
 bun release
 ```
 
-Open the current directory's clasp project on script.google.com.
+スクリプトを開きます。
 
 ```shell
 bun clasp:open
