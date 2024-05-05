@@ -10,7 +10,7 @@ import type { requestOptionsType } from "../types";
  */
 function getUrlInspection(
   urlToCheck: string
-): GoogleAppsScript.URL_Fetch.HTTPResponse {
+): GoogleAppsScript.URL_Fetch.HTTPResponse | null {
   const requestUrl =
     "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect";
   const siteUrl = getPropertiesService("SITE_URL");
@@ -23,14 +23,22 @@ function getUrlInspection(
 
   const requestOptions: requestOptionsType = {
     method: "post",
-    payload: requestPayload,
+    contentType: "application/json",
+    payload: JSON.stringify(requestPayload),
     muteHttpExceptions: true,
     headers: { Authorization: `Bearer ${ScriptApp.getOAuthToken()}` },
   };
 
-  const response = UrlFetchApp.fetch(requestUrl, requestOptions);
-  Logger.log(response);
-  return response;
+  try {
+    const response = UrlFetchApp.fetch(requestUrl, requestOptions);
+    Logger.log("検証結果:", response.getContentText());
+    return response;
+  } catch (error) {
+    // ログにURLを出力
+    Logger.log("検証エラーURL:", urlToCheck);
+    Logger.log(`エラーが発生しました: ${error}`);
+    return null;
+  }
 }
 
 export { getUrlInspection };

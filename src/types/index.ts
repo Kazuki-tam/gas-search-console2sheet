@@ -1,6 +1,7 @@
 export type requestOptionsType = {
   method: "post";
-  payload: { inspectionUrl: string; siteUrl: string; languageCode: string };
+  contentType: "application/json";
+  payload: string;
   muteHttpExceptions: boolean;
   headers: { Authorization: string };
 };

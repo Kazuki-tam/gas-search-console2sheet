@@ -18,15 +18,17 @@ function processUrls(urls: string[][]): {
 
   urls.forEach((url) => {
     const response = getUrlInspection(url[0]);
-    const responseBody = JSON.parse(response.getContentText());
+    const responseBody = response
+      ? JSON.parse(response.getContentText())
+      : null;
     const inspectionResultLinkItem =
-      responseBody.inspectionResult?.inspectionResultLink || "-";
+      responseBody?.inspectionResult?.inspectionResultLink || "-";
     const verdict =
-      responseBody.inspectionResult?.indexStatusResult?.verdict || "-";
+      responseBody?.inspectionResult?.indexStatusResult?.verdict || "-";
     const coverageStatus =
-      responseBody.inspectionResult?.indexStatusResult?.coverageState || "-";
+      responseBody?.inspectionResult?.indexStatusResult?.coverageState || "-";
     const referringUrlsList =
-      responseBody.inspectionResult?.indexStatusResult?.referringUrls || [];
+      responseBody?.inspectionResult?.indexStatusResult?.referringUrls || [];
     const referringUrlsItem =
       referringUrlsList.map((item: string) => item).join(", ") || "-";
 
