@@ -13,6 +13,9 @@ declare const global: {
 function main() {
   // サイトマップのURLを取得
   const siteMapUrl = getPropertiesService("SITEMAP_URL");
+  if (!siteMapUrl) {
+    throw new Error("SITEMAP_URL is not set in PropertiesService.");
+  }
   // サイトマップのURLからURLリストを取得
   const urlList = getSitemapUrls(siteMapUrl);
   // URLリストをシートに書き込む
