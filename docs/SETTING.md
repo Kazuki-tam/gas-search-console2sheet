@@ -12,7 +12,7 @@
 
 
 ## ② スクリプト プロパティの設定
-App Scriptのスクリプトプロパティで対象サイトURL（SITE_URL）、サイトマップURL（SITEMAP_URL）、
+App Scriptのスクリプトプロパティで対象サイトURL（SITE_URL）、サイトマップURL（SITEMAP_URL）、検索パフォーマンス計測期間の開始日（START_DATE）、検索パフォーマンス計測期間の終了日（END_DATE）、
 検査URL数上限（MAX_ROWS）を登録します。
 
 例:
@@ -20,6 +20,8 @@ App Scriptのスクリプトプロパティで対象サイトURL（SITE_URL）�
 SITE_URL: https://example.com/
 SITEMAP_URL: https://example.com/sitemap.xml
 MAX_ROWS: 100
+START_DATE: 2024-04-01
+END_DATE: 2024-04-30
 ```
 ※ SITE_URLはSearch Consoleに登録されているURLとマッチさせる必要があります。
 
@@ -30,13 +32,18 @@ MAX_ROWS: 100
 SITE_URL: サイトURL（末尾に / つける）
 SITEMAP_URL: サイトマップURL
 MAX_ROWS: URL検査を一度に実行する際の上限
+START_DATE: 検索パフォーマンス計測期間の開始日（任意）
+END_DATE: 検索パフォーマンス計測期間の終了日（任意）
 ```
+
+START_DATE、END_DATEは任意の設定です。設定しない場合は、デフォルトで直近で1か月のデータを取得します。
 
 ## ③ スクリプトの実行
 スクリプトの実行を行い、処理が正常に完了することを確認します。
 
 - index.gs（`main` 関数）: URL検査を実行
 - report.gs（`report` 関数）: インデックス状況の推移レポート作成
+- performance.gs（`performance` 関数）: 検索パフォーマンスデータの取得
 
 ### URL検査
 URL検査は Search Console URL Inspection API を利用します。
@@ -63,6 +70,14 @@ URL検査は Search Console URL Inspection API を利用します。
 3. 集計結果を元に積み上げ面グラフを作成
 
 ![レポート](./images/screenshot-index-report.png)
+
+### 検索パフォーマンスデータの取得
+Search Console API を利用して、検索パフォーマンスデータを取得します。実行すると、以下の流れで処理が実行されます。
+
+1. 検索パフォーマンスシートを作成
+2. 検索パフォーマンスデータを取得
+   - クエリ、ページ、クリック数、表示回数、CTR、掲載順位
+3. データをシートに出力
 
 ## 実行用のUIを設置（任意）
 スクリプトの実行を行うためのUIを設置することで、任意のタイミングで処理を実行しやすくなります。

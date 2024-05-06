@@ -31,7 +31,6 @@ function getUrlInspection(
 
   try {
     const response = UrlFetchApp.fetch(requestUrl, requestOptions);
-    Logger.log("検証結果:", response.getContentText());
     return response;
   } catch (error) {
     // ログにURLを出力
