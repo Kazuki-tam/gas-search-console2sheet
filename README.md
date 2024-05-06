@@ -1,4 +1,4 @@
-# Google Search Console検査自動化ツール（β）
+# gas-search-console2sheet
 
 Google Search Consoleの情報をスプレッドシートに出力するGoogle Apps Script（GAS）プロジェクトです。
 
@@ -6,9 +6,12 @@ Google Search Consoleの情報をスプレッドシートに出力するGoogle A
 
 ツールの設定については「[設定手順](./docs/SETTING.md)」を参照してください。
 
+🔰 このプロジェクトはβ版です。不具合や改善点があれば、Issueを作成してください。
+
 ## 主な機能
-- URL検索
+- URL検索（インデックス状況の確認）
 - インデックス状況の推移レポート作成
+- 検索パフォーマンスデータの取得
 
 ### URL検索機能
 対象のサイトマップ情報を利用して、URLのインデックス状況を自動取得し、スプレッドシートに出力します。
@@ -27,6 +30,14 @@ URL検索は実行に時間がかかるため、スプレッドシートに出�
 URL検索機能で取得したデータを元に、インデックス状況の推移レポートを作成します。
 
 ![レポート](./docs/images/screenshot-index-report.png)
+
+### 検索パフォーマンスデータの取得機能
+[Search Console API ](https://developers.google.com/webmaster-tools?hl=ja) を利用して、検索パフォーマンスデータを取得します。
+
+データ取得で利用されている情報は[検索アナリティクス（Search Analytics）](https://developers.google.com/webmaster-tools/v1/searchanalytics/query?hl=ja)を参照してください。
+
+![検査パフォーマンス](./docs/images/screenshot-search-analytics.png)
+
 
 ## 主な依存関係
 
