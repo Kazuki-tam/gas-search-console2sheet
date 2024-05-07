@@ -21,8 +21,9 @@ function aggregateIndexStatus() {
 
   allSheets.forEach(function (sheet) {
     const sheetName = sheet.getName();
-    // READMEシートと集計結果シートは除外
-    if (sheetName === "README" || sheetName === "集計結果") return;
+    // シート名が日付形式（YYYY-MM-DD）でなければ除外
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    if (!datePattern.test(sheetName)) return;
 
     // シート名から日付を取得
     const date = sheetName;
