@@ -1,4 +1,4 @@
-import { aggregateIndexStatus } from "./sheets/aggregate/aggregateIndexStatus";
+import { aggregateIndexStatus } from "./sheets/aggrigation/aggregateIndexStatus";
 import { createChart } from "./sheets/chart/createChart";
 
 /**

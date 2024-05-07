@@ -1,5 +1,5 @@
 import { getSearchPerformanceData } from "./search-console/getSearchPerformanceData";
-import { writePerformancesToSheet } from "./sheets/write-sitemap/writePerformancesToSheet";
+import { writePerformancesToSheet } from "./sheets/performance/writePerformancesToSheet";
 import { getPropertiesService } from "./utils/getPropertiesService";
 import { formatDate } from "./utils/formatDate";
 
