@@ -10,7 +10,7 @@ function createChart() {
   // データの準備
   const lastRow = resultSheet.getLastRow();
   // A列:日付、B列:登録済、C列:登録除外、D列:エラー からデータを取得
-  const dataRange = resultSheet.getRange("A1:D" + lastRow);
+  const dataRange = resultSheet.getRange(`A1:D${lastRow}`);
 
   // 積み上げ面グラフを作成
   const chartBuilder = resultSheet

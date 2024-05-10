@@ -19,7 +19,8 @@ function aggregateIndexStatus() {
   // ヘッダーの文字色を白に設定（オプション）
   headerRange.setFontColor("#FFFFFF");
 
-  allSheets.forEach(function (sheet) {
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  allSheets.forEach((sheet) => {
     const sheetName = sheet.getName();
     // シート名が日付形式（YYYY-MM-DD）でなければ除外
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -38,7 +39,8 @@ function aggregateIndexStatus() {
     let neutralCount = 0;
     let errorCount = 0;
     let otherCount = 0;
-    values.forEach(function (row) {
+    // biome-ignore lint/complexity/noForEach: <explanation>
+    values.forEach((row) => {
       const status = row[2];
       switch (status) {
         case "PASS":

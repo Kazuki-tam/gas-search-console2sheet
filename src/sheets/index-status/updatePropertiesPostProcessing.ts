@@ -7,18 +7,18 @@ import { DEFAULT_START_ROW } from "../constants";
  * @param {number} lastRow - 最終行
  */
 function updatePropertiesPostProcessing(
-  scriptProperties: GoogleAppsScript.Properties.Properties,
-  endRow: number,
-  lastRow: number
+	scriptProperties: GoogleAppsScript.Properties.Properties,
+	endRow: number,
+	lastRow: number,
 ) {
-  if (endRow >= lastRow) {
-    scriptProperties.setProperty(
-      "lastProcessedRow",
-      DEFAULT_START_ROW.toString()
-    );
-  } else {
-    scriptProperties.setProperty("lastProcessedRow", (endRow + 1).toString());
-  }
+	if (endRow >= lastRow) {
+		scriptProperties.setProperty(
+			"lastProcessedRow",
+			DEFAULT_START_ROW.toString(),
+		);
+	} else {
+		scriptProperties.setProperty("lastProcessedRow", (endRow + 1).toString());
+	}
 }
 
 export { updatePropertiesPostProcessing };

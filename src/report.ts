@@ -5,12 +5,12 @@ import { createChart } from "./sheets/chart/createChart";
  * report function
  */
 declare const global: {
-  [x: string]: () => void;
+	[x: string]: () => void;
 };
 
 function report() {
-  aggregateIndexStatus();
-  createChart();
+	aggregateIndexStatus();
+	createChart();
 }
 
 global.report = report;

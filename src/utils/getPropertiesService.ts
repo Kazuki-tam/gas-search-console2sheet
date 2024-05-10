@@ -6,12 +6,12 @@
  */
 
 function getPropertiesService(propertyName: string) {
-  const propertyValue: string | null =
-    PropertiesService.getScriptProperties().getProperty(propertyName);
-  if (!propertyValue) {
-    Logger.log(`Error: ${propertyName} is not defined.`);
-  }
-  return propertyValue;
+	const propertyValue: string | null =
+		PropertiesService.getScriptProperties().getProperty(propertyName);
+	if (!propertyValue) {
+		Logger.log(`Error: ${propertyName} is not defined.`);
+	}
+	return propertyValue;
 }
 
 export { getPropertiesService };

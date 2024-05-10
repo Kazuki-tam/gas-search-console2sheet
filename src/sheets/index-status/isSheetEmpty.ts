@@ -4,10 +4,10 @@
  * @returns {boolean} - シートが空の場合はtrue、それ以外はfalse
  */
 function isSheetEmpty(sheet: GoogleAppsScript.Spreadsheet.Sheet): boolean {
-  return (
-    sheet.getRange("B2").getValue() === "" &&
-    sheet.getRange("C2").getValue() === ""
-  );
+	return (
+		sheet.getRange("B2").getValue() === "" &&
+		sheet.getRange("C2").getValue() === ""
+	);
 }
 
 export { isSheetEmpty };
