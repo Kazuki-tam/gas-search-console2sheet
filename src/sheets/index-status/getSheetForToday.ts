@@ -5,11 +5,11 @@
  * @throws {Error} - シートが見つからない場合
  */
 function getSheetForToday(today: string): GoogleAppsScript.Spreadsheet.Sheet {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(today);
-  if (!sheet) {
-    throw new Error("シートが見つかりませんでした。");
-  }
-  return sheet;
+	const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(today);
+	if (!sheet) {
+		throw new Error("シートが見つかりませんでした。");
+	}
+	return sheet;
 }
 
 export { getSheetForToday };

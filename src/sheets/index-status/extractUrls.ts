@@ -6,14 +6,14 @@
  * @returns {string[][]} - URLリスト
  */
 function extractUrls(
-  sheet: GoogleAppsScript.Spreadsheet.Sheet,
-  startRow: number,
-  endRow: number
+	sheet: GoogleAppsScript.Spreadsheet.Sheet,
+	startRow: number,
+	endRow: number,
 ): string[][] {
-  return sheet
-    .getRange(`A${startRow}:A${endRow}`)
-    .getValues()
-    .filter((row) => row[0] !== "");
+	return sheet
+		.getRange(`A${startRow}:A${endRow}`)
+		.getValues()
+		.filter((row) => row[0] !== "");
 }
 
 export { extractUrls };

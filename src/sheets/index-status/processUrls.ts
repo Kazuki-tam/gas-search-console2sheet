@@ -16,6 +16,7 @@ function processUrls(urls: string[][]): {
   const inspectionResultLinks: string[][] = [];
   const referringUrls: string[][] = [];
 
+  // biome-ignore lint/complexity/noForEach: <explanation>
   urls.forEach((url) => {
     const response = getUrlInspection(url[0]);
     const responseBody = response

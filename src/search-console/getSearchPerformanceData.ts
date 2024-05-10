@@ -1,5 +1,4 @@
 import type { requestOptionsType } from "../types";
-import { getPropertiesService } from "../utils/getPropertiesService";
 
 interface DimensionFilter {
   dimension: string;
@@ -26,11 +25,9 @@ function getSearchPerformanceData(
   // siteURLを https%3A%2F%2Fyones-kitchen.vercel.app%2F にエンコードする
   const searchUrl: string = encodeURIComponent(siteURL);
 
-  const requestUrl: string =
-    "https://www.googleapis.com/webmasters/v3/sites/" +
-    searchUrl +
-    "/searchAnalytics/query";
+  const requestUrl: string = `https://www.googleapis.com/webmasters/v3/sites/${searchUrl}/searchAnalytics/query`;
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const requestPayload: any = {
     startDate,
     endDate,
@@ -55,13 +52,14 @@ function getSearchPerformanceData(
     const response = UrlFetchApp.fetch(requestUrl, requestOptions);
     const jsonResponse = JSON.parse(response.getContentText());
     const rows = jsonResponse.rows || [];
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const data: (string | number)[][] = rows.map((row: any) => [
       row.keys[1], // query
       row.keys[0], // page
       row.clicks,
       row.impressions,
-      parseFloat(row.position.toFixed(2)),
-      parseFloat(row.ctr.toFixed(2)),
+      Number.parseFloat(row.position.toFixed(2)),
+      Number.parseFloat(row.ctr.toFixed(2)),
     ]);
     return data;
   } catch (error) {

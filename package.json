@@ -1,7 +1,7 @@
 {
-  "name": "gas-bun-starter",
-  "version": "0.0.1",
-  "description": "Starter kit to develop Google Apps Scrip with Bun.",
+  "name": "gas-search-console2sheet",
+  "version": "0.0.2",
+  "description": "Google Search Consoleの情報をスプレッドシートに出力するGoogle Apps Script（GAS）プロジェクトです。",
   "author": "Kazuki Yonemoto (https://dev.to/tim_yone)",
   "license": "MIT",
   "scripts": {
@@ -12,9 +12,19 @@
     "clasp:push": "clasp push -f",
     "clasp:open": "clasp open",
     "clasp:login": "clasp login",
-    "clasp:clone": "clasp clone"
+    "clasp:clone": "clasp clone",
+    "format": "npm-run-all format:*",
+    "format:src": "bunx @biomejs/biome format --write src",
+    "format:task": "bunx @biomejs/biome format --write _tasks",
+    "lint": "npm-run-all lint:*",
+    "lint:src": "bunx @biomejs/biome lint --apply src",
+    "lint:task": "bunx @biomejs/biome lint --apply _tasks",
+    "check": "npm-run-all lint:*",
+    "check:src": "bunx @biomejs/biome check --apply src",
+    "check:task": "bunx @biomejs/biome check --apply _tasks"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "@google/clasp": "^2.4.2",
     "@types/google-apps-script": "^1.0.78",
     "bun-types": "latest",

@@ -43,12 +43,16 @@ URL検索機能で取得したデータを元に、インデックス状況の�
 
 - [Google Apps Script](https://workspace.google.co.jp/intl/ja/products/apps-script/)
 - [Clasp](https://github.com/google/clasp)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Bun](https://bun.sh/)
+- [Biome](https://biomejs.dev/ja/)
 
 ## 必要な環境
 
+- [Google Cloud Platform](https://console.cloud.google.com/)
 - [Bun](https://bun.sh/)
 
-プロジェクト内ではTypeScriptを利用しています。
+Bunのインストールは [Bun 公式サイト](https://bun.sh/docs/installation) を参照してください。
 
 ## 利用方法
 
@@ -100,6 +104,24 @@ bun release
 
 ```shell
 bun clasp:open
+```
+
+ファイルのformat、lint、インポートの整理などを一度に行います。
+
+```shell
+bun check
+```
+
+ファイルのformatを行います。
+
+```shell
+bun format
+```
+
+ファイルのlintを行います。
+
+```shell
+bun lint
 ```
 
 ## ライセンス

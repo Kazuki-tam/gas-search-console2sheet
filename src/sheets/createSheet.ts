@@ -5,19 +5,19 @@
  */
 
 type returnValues = {
-  sheet: GoogleAppsScript.Spreadsheet.Sheet;
-  isCreated: boolean;
+	sheet: GoogleAppsScript.Spreadsheet.Sheet;
+	isCreated: boolean;
 };
 
 function createSheet(sheetName: string): returnValues {
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = spreadsheet.getSheetByName(sheetName);
-  let isCreated = true;
-  if (!sheet) {
-    sheet = spreadsheet.insertSheet(sheetName);
-    isCreated = false;
-  }
-  return { sheet, isCreated };
+	const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+	let sheet = spreadsheet.getSheetByName(sheetName);
+	let isCreated = true;
+	if (!sheet) {
+		sheet = spreadsheet.insertSheet(sheetName);
+		isCreated = false;
+	}
+	return { sheet, isCreated };
 }
 
 export { createSheet };

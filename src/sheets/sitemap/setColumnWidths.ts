@@ -4,12 +4,12 @@
  * @param {number[]} widths - 列幅のリスト
  */
 function setColumnWidths(
-  sheet: GoogleAppsScript.Spreadsheet.Sheet,
-  widths: number[]
+	sheet: GoogleAppsScript.Spreadsheet.Sheet,
+	widths: number[],
 ): void {
-  widths.forEach((width, index) => {
-    sheet.setColumnWidth(index + 1, width);
-  });
+	widths.forEach((width, index) => {
+		sheet.setColumnWidth(index + 1, width);
+	});
 }
 
 export { setColumnWidths };
